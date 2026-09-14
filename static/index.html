@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AI-assisted tomato leaf disease screening">
+  <title>LeafLens | Tomato Health Scanner</title>
+  <script>
+    if (window.location.protocol === 'file:') {
+      window.location.replace('http://127.0.0.1:8001/');
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <nav><a class="brand" href="/"><span>●</span> LeafLens</a><a href="/docs">API docs ↗</a></nav>
+    <section id="upload-view" class="hero view">
+      <div class="copy">
+        <p class="eyebrow">TOMATO LEAF DISEASE DETECTOR</p>
+        <h1>Catch leaf problems <em>before they spread.</em></h1>
+      </div>
+      <section class="scanner" aria-labelledby="scanner-title">
+        <div class="scanner-head"><span>01</span><div><h2 id="scanner-title">Scan a tomato leaf</h2><p>JPEG, PNG or WebP</p></div></div>
+        <label id="drop-zone" class="drop-zone">
+          <input id="file-input" type="file" accept="image/jpeg,image/png,image/webp">
+          <img id="preview" alt="Selected tomato leaf preview">
+          <div id="prompt"><div class="upload-icon">↑</div><strong>Drop your image here</strong><small>or click to browse</small></div>
+        </label>
+        <button id="scan-button" disabled>Analyze leaf <span>→</span></button>
+        <p id="status" role="status"></p>
+      </section>
+    </section>
+    <section id="result-view" class="result-view view" hidden>
+      <div class="result-intro">
+        <button id="scan-again-top" class="text-button" type="button">← Scan another leaf</button>
+        <p class="eyebrow">SCREENING COMPLETE</p>
+        <h1>Your leaf <em>analysis.</em></h1>
+        <p class="lede">Review the detected class, model confidence, and recommended next steps.</p>
+      </div>
+      <article class="result-card">
+        <div class="result-image-wrap">
+          <img id="result-image" alt="Analyzed tomato leaf">
+          <span class="image-tag">Uploaded leaf</span>
+        </div>
+        <div class="result-details">
+          <div id="demo-badge" class="demo-badge" hidden>Demo result · not a diagnosis</div>
+          <small>DETECTED CLASS</small>
+          <h2 id="disease"></h2>
+          <div class="recommendation">
+            <span class="recommendation-icon">✦</span>
+            <div><h3>Recommended action</h3><p id="remedy"></p></div>
+          </div>
+          <p id="disclaimer" class="disclaimer"></p>
+          <button id="scan-again" type="button">Scan another leaf <span>↻</span></button>
+        </div>
+      </article>
+    </section>
+    <footer>Built with TensorFlow · FastAPI · responsible AI</footer>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
